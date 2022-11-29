@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入react的核心库 -->
+    <script src="script/react.development.js"></script>
+    <!-- 引入react的DOM库 -->
+    <script src="script/react-dom.development.js"></script>
+</head>
+<body>
+    
+<div id="root"></div>
+
+<script>
+
+    // 创建一个React元素 React.createElement()
+    // 参数：1.元素的名称(html便签必须小写)
+    //       2.标签中的属性   
+    //          -在设置事件是，属性名需要改为驼峰命名法
+    //          -class属性AV要使用className来设置
+    //       3.元素的内容(子元素)
+    const button = React.createElement('button',{id:'btn',type:'button',className:'hello',onClick:()=>alert("123")},'点我一下');
+
+    // 创建第一个div
+    const div = React.createElement('div',{},'我是div',button);
+
+    // 获取根元素
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+
+    // 将元素在根元素中显示
+    // root.render() -用来将React元素渲染到根元素中
+    //               -根元素中所有的内容都会被删除，被React元素替换
+    //               -当重复调用render()时，React会将两次的渲染结果进行比较
+    //                  它会确保只修改那些发生变化的元素，对DOM做最少的修改
+    root.render(div);
+</script>
+
+</body>
+</html>
